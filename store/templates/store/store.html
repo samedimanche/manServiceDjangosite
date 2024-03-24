@@ -1,0 +1,64 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}GrandParts: Каталог{% endblock %}
+{% block content %}
+{#     <div class="row">#}
+{#     {% for product in products %}#}
+{#        <div class="col-lg-4"><a href="{% url 'item' product.id %}">#}
+{#            <img class="thumbnail" src="{{ product.imageURL }}">#}
+{#            <div class="box-element">#}
+{#                <h5><strong>{{ product.name }}</strong></h5>#}
+{#                <h4 style="display: inline-block"><strong>{{ product.price|intcomma }} ₽</strong></h4></a>#}
+{#                <div class="box-btn-product">#}
+{#                <button data-product={{ product.id }} data-action="add" class="btn add-btn update-cart right-add-btn right-add-btn_store">В корзину</button>#}
+{#                <a class="btn left-add-btn left-add-btn_store" href="{% url 'item' product.id %}">Описание</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#     {% endfor %}#}
+{#    </div>#}
+
+
+
+
+
+
+
+<div class="row">
+    <div class="filter-container" style="margin-bottom: 35px; text-align: center">
+        <form action="{% url 'store' %}" method="get">
+            <label for="category">Фильтр по категории</label>
+            <select name="category" id="category" onchange="this.form.submit()">
+                <option value="">Выбрать категорию</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>{{ category.category }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    {% for product in page_obj %}
+        <div class="col-lg-4"><a href="{% url 'item' product.id %}">
+            <img class="thumbnail" src="{{ product.imageURL }}"></a>
+            <div class="box-element"><a href="{% url 'item' product.id %}">
+                <h5><strong>{{ product.name }}</strong></h5>
+                <h4 style="display: inline-block"><strong>{{ product.price|intcomma }} ₽</strong></h4></a>
+                <div class="box-btn-product">
+                <button data-product={{ product.id }} data-action="add" class="btn add-btn update-cart right-add-btn right-add-btn_store">В корзину</button>
+                <a class="btn left-add-btn left-add-btn_store" href="{% url 'item' product.id %}">Описание</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a class="prev-page" href="?page={{ page_obj.previous_page_number }}">Предыдущая страница</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <a class="next-page"  href="?page={{ page_obj.next_page_number }}">Следующая страница</a>
+    {% endif %}
+</div>
+{% endblock content %}

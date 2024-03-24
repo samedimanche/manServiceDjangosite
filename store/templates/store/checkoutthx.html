@@ -1,0 +1,21 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}GrandParts: Заказ оформлен{% endblock %}
+
+{% block content %}
+<h1>Ваш заказ оформлен</h1>
+<p>Спасибо за бронирование</p>
+    <p>С Вами скоро свяжутся</p>
+    <div class="box-element">
+            <a  class="btn left-add-btn" style="float: left; margin-left: 0 !important;" href="{% url 'store' %}">&#x2190; В каталог</a>
+            <a style="float:right; margin:5px;" class="btn right-add-btn" href="{% url 'home' %}"><i class="bi bi-house"></i> Главная</a>
+    </div>
+    <br>
+    <br>
+
+
+
+    <br>
+    <br>
+{% endblock %}

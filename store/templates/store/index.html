@@ -1,0 +1,135 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}GranPars: Главная страница{% endblock %}
+
+{% block content %}
+<main>
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" >
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="bd-placeholder-img" id="corus-img" src="{% static 'img/second_corus.jpg' %}">
+{#        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>#}
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1 id="carousel-caption_h1">Наш каталог</h1>
+            <p>Ознакомьтесь с нашими товарами</p>
+            <p><a class="btn btn-lg btn-slider" href="{% url 'store' %}">Перейти в каталог</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+          <img class="bd-placeholder-img" id="corus-img" src="{% static 'img/first_corus.jpg' %}">
+{#        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>#}
+        <div class="container">
+          <div class="carousel-caption">
+            <h1 id="carousel-caption_h1">О нас</h1>
+            <p>Здесь вы можете узнать о нас больше информации</p>
+            <p><a class="btn btn-lg btn-slider" href="{% url 'about' %}">О нас</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+          <img class="bd-placeholder-img" id="corus-img" src="{% static 'img/third_corus.png' %}">
+{#        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>#}
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1 id="carousel-caption_h1">Наши контакты</h1>
+            <p>Если у вас есть вопросы, вы можете связаться с нами</p>
+            <p><a class="btn btn-lg btn-slider" href="{% url 'contacts' %}">Перейти</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container marketing">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+          <span class="icon_home_page"><img  src="{% static 'img/arrowrepeat.png' %}"></span>
+{#        <svg class="bd-placeholder-images rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="images" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>#}
+        <h2 class="fw-normal">СЕРВИСНЫЙ ЦЕНТР</h2>
+        <p>Наша компания осуществляет гарантийный ремонт, обслуживание самосвалов и спецтехники так же предоставляет услуги Сервисного цента и услуги выездной команды технических специалистов</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+          <span class="icon_home_page"><img src="{% static 'img/person.png' %}"></span>
+          <h2 class="fw-normal">ОФИЦИАЛЬНЫЙ ДИСТРИБЬЮТОР</h2>
+          <p>Мы соблюдаем все стандарты качества и обслуживания корпорации Sinotruk</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <span class="icon_home_page"><img src="{% static 'img/price.png' %}"></span>
+        <h2 class="fw-normal">ПРОГРАММА СКИДОК</h2>
+        <p>Накопительная и оптовая система скидок. Наша компания работает с различными системами финансирования (Лизинг, Кредит, Рассрочка под банковскую гарантию)</p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Запчасти</h2>
+        <p class="lead">У нас имеется собственный склад запчастей, своевременно пополняющийся ассортиментом.</p>
+      </div>
+      <div class="col-md-5">
+          <img style="border-radius: 20px" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static 'img/Rectfirst_corus.jpg' %}">
+{#        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>#}
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Обслуживание техники</h2>
+        <p class="lead">Собственные ремонтные боксы на территории базы.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+          <img style="border-radius: 20px" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static 'img/Rectsecond_corus.jpg' %}">
+{#        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>#}
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Гарантия производителя</h2>
+        <p class="lead">Отдел послепродажного и гарантийного обслуживания (при гарантийном случае, наши механики и менеджеры в короткий срок смогут решить Вашу проблему).</p>
+      </div>
+      <div class="col-md-5">
+          <img  style="border-radius: 20px" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static 'img/Rectthird_corus.png' %}">
+{#          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">#}
+{#              <title>Placeholder</title>#}
+{#              <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>#}
+{#              <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>#}
+{#          </svg>#}
+      </div>
+    </div>
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+</main>
+{% endblock %}

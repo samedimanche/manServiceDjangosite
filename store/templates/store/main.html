@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'img/nut.svg' %}">
+    <title>{% block title %}{% endblock %}</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+  <script type="text/javascript">
+
+      var user = '{{ request.user }}'
+
+      function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+
+      function  getCookie(name){
+          var cookieArr = document.cookie.split(";");
+
+          for (var i = 0; i < cookieArr.length; i++) {
+              var cookiePair = cookieArr[i].split("=");
+
+              if (name == cookiePair[0].trim()){
+                  return decodeURIComponent(cookiePair[1]);
+              }
+            }
+          return null
+        }
+
+       var cart = JSON.parse(getCookie('cart'))
+        if(cart == undefined){
+            cart = {}
+            console.log('Cart was created!')
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"}
+
+        console.log('Cart:', cart)
+
+  </script>
+
+
+</head>
+<body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary " aria-label="Thirteenth navbar example">
+          <a class="navbar-brand" href="{% url 'home' %}"><i class="bi bi-gear-fill"></i> GranPars</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-lg-center d-lg-flex" id="navbarNav">
+            <ul class="navbar-nav col-lg-6 justify-content-lg-center text-center">
+                <li class="nav-item add_right_margin">
+                <a class="nav-link" href="{% url 'home' %}"><i class="bi bi-house"></i> Главная</a>
+              </li>
+              <li class="nav-item add_right_margin">
+                <a class="nav-link" href="{% url 'store' %}"><i class="bi bi-nut"></i> Каталог</a>
+              </li>
+                <li class="nav-item add_right_margin">
+                <a class="nav-link" href="{% url 'about' %}"><i class="bi bi-person"></i> О нас</a>
+              </li>
+                </li>
+                <li class="nav-item add_right_margin">
+                <a class="nav-link" href="{% url 'contacts' %}"><i class="bi bi-telephone"></i> Контакты</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cart' %}">
+                        <span id="cart-icon-container">
+                            <i id="cart-icon" class="bi bi-cart2"></i>
+                            <span class="badge bg-primary rounded-pill" id="cart-total">{{ cartItems }}</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+              <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+                    <div style="display: flex;">
+                        <input class="form-control mr-sm-2" style="border-radius: 25px" type="search" placeholder="Номер или имя запчасти" aria-label="Search" name="query">
+                        <button class="btn left-add-btn my-2 my-sm-0" type="submit">Поиск</button>
+                    </div>
+              </form>
+
+{#            <div class="form-inline my-2 my-lg-0">#}
+{#                <a href="{% url 'cart' %}">#}
+{#                    <img  id="cart-icon" src="{% static 'img/cart.png' %}">#}
+{#                </a>#}
+{#                <p id="cart-total">{{ cartItems }}</p>#}
+{#            </div>#}
+          </div>
+        </nav>
+
+         <div class="container">
+                <br>
+                {% block content %}
+
+
+                 {% endblock content %}
+         </div>
+        <!-- FOOTER -->
+        <footer  class="blog-footer">
+            <div class="container py-5">
+                <div class="row_footer">
+                <h5><a href="{% url 'home' %}">Главная</a></h5>
+                <h5><a href="{% url 'store' %}">Каталог</a></h5>
+                <h5><a href="{% url 'contacts' %}">Контакты</a></h5>
+                <h5><a href="{% url 'about' %}">О нас</a></h5>
+                <h5><a href="{% url 'cart' %}">Корзина</a></h5>
+                </div>
+            </div>
+
+            <div class="blog-footer">
+          <p>Site created by<a href="" target="_blank"> Timox</a></p>
+          <p>© 2017 GranPars Company, Inc. · <a href="{% url 'privacy' %}" >Конфиденциальность</a></p>
+            </div>
+        </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+{#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>#}
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>

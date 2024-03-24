@@ -1,0 +1,42 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}GrandParts: Контакты{% endblock %}
+
+{% block content %}
+<div class="container contacts_company">
+      <h1 style="text-align: center">Контакты</h1>
+
+<div class="row">
+
+    <div class="col-sm-8" style="text-align: left">
+    <div class="jobtime_company">
+      <i class="bi bi-clock-fill"></i> <span>Ежедневно с 09:00 до 18:00 (обед с 12:00 до 13:00)</span>
+    </div>
+        <br>
+    <div class="mail_company">
+      <i class="bi bi-envelope-at-fill"></i> <a href="mailto: ggg@mail.ru" itemprop="email"> ggg@mail.ru</a>
+    </div><br>
+    <div class="phone_company">
+      <ul><i class="bi bi-telephone-fill"></i> Отдел продажи запасных частей
+        <li style="margin-left: 30px">
+          <a href="tel:+79095148226" itemprop="telephone">+7(909) 514-82-26</a><br/>
+          <a href="tel:+79638105979" itemprop="telephone">+7(963) 810-59-79</a>
+        </li>
+      </ul>
+    </div><br>
+      <div class="adress_company" style="align-self: flex-start;">
+    <i class="bi bi-geo-alt-fill"></i> <a href="https://2gis.ru/blagoveshensk/firm/70000001024873395?m=127.537297%2C50.325812%2F16.83" target="_blank">
+      г. Благовещенск, Новотроицкое шоссе, 4-й километр, 10/1</a>
+  </div>
+    </div>
+
+  <div class="col-sm-4">
+    <iframe class="map_contact" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2141.9199662853607!2d127.53724611215142!3d50.32577237457949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1681216607986!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}GrandParts: {{ item.name }}{% endblock %}
+
+{% block content %}
+                <img class="thumbnail-item" width="650" height="650" src="{{ item.imageURL }}" alt="">
+        <div class="container_inner">
+                        <h1>{{ item.name }}</h1>
+            <div class="price_inner_item">{{ item.price|intcomma }} ₽</div>
+
+                        <p>{% if item.product_availability == 'available' %}
+                            Наличие товара в Благовещенске: В наличии
+                        {% elif item.product_availability == 'not_available' %}
+                            Наличие товара в Благовещенске: Нет в наличии
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+                        </p>
+
+                    <p>{% if item.status == 'new' %}
+                        Состояние: Новый
+                        {% elif item.status == 'not_new' %}
+                        Состояние: Б/у
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+                    </p>
+
+                        <p>{% if item.originality == 'original' %}
+                        Оригинальность: Оригинал
+                        {% elif item.status == 'not_original' %}
+                        Оригинальность: Не оригинал
+                        {% else %}
+                            <span></span>
+                        {% endif %}
+                        </p>
+
+                    <p>Производитель: {{ item.producer|safe }}</p>
+                    <p><a href="https://www.google.com/search?q={{ item.part_number }}" target="_blank">Номер запчасти: <span style="font-weight: bold">{{ item.part_number|safe }}</span></a></p>
+                    <p><button data-product={{ item.id }} data-action="add" class="update-cart add-to-cart-button right-add-btn" >В корзину</button></p>
+
+
+            </div>
+        <div class="container_inner_foot">
+                <h4>Подходит</h4>
+                <p>Для моделей: {{ item.fit|safe }}</p>
+
+                <h4>Описание</h4>
+                <p>{{ item.description|safe }}</p>
+                <h4>Доставка и оплата</h4>
+                <p>Самовывоз:
+                    <ul>
+                        <li><a href="https://2gis.ru/blagoveshensk/firm/70000001024873395?m=127.535218%2C50.325578%2F17.74" target="_blank">
+                            <span style="font-weight: bold">Точка на карте</span></a></li>
+                        <li>Новотроицкое шоссе, 4-й километр, 10/1</li>
+                    </ul>
+                    Бесплатная доставка по городу Благовещенск<br>
+                    Бесплатная доставка до транспортной компании в Благовещенске<br>
+                    Оплата наличными, безналичный расчет, Сбербанк
+                </p>
+         </div>
+
+{% endblock %}
