@@ -1,0 +1,1 @@
+# manServiceDjangosite
